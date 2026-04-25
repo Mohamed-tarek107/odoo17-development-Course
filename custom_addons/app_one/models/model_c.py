@@ -1,4 +1,4 @@
 from odoo import models
 
-class ModelA(models.AbstractModel):
+class ModelC(models.AbstractModel):
     _name = 'model_c'

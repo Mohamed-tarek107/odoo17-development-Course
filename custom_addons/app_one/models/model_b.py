@@ -1,4 +1,4 @@
 from odoo import models
 
-class ModelA(models.TransientModel):
+class ModelB(models.TransientModel):
     _name = 'model_b'
