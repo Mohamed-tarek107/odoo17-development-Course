@@ -1,7 +1,7 @@
 <odoo>
     <record id="property_view_tree" model="ir.ui.view">
-        <field name="name">Property action</field>
-        <field name="model">Property</field>
+        <field name="name">property action</field>
+        <field name="model">property</field>
         <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
