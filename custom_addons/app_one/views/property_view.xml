@@ -13,8 +13,8 @@
     </record>
 
     <record id="property_action" model ="ir.actions.act_window">
-        <field name="name">Property action</field>
-        <field name="res_model">Property</field>
+        <field name="name">property action</field>
+        <field name="res_model">property</field>
     </record>
     <menuitem
         id="property_menu_item"
