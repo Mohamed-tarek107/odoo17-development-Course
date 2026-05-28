@@ -40,12 +40,25 @@
                 </form>
         </field>
     </record>
+    <record id="property_view_search" model="ir.ui.view">
+            <field name="name">property search</field>
+            <field name="model">property</field>
+            <field name="arch" type="xml">
+                    <search>
+                        <field name="postcode"/>
+                        <field name="name"/>
 
+                        <filter name="is_garden" string="with Garden" domain="[('garden','=','True')]"/>
+                    </search>
+            </field>
+    </record>
 
     <record id="property_action" model ="ir.actions.act_window">
         <field name="name">property action</field>
         <field name="res_model">property</field>
     </record>
+
+
     <menuitem
         id="property_menu_item"
         name="properites"
