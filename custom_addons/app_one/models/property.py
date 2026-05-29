@@ -35,3 +35,17 @@ class Property(models.Model):
     def create(self, vale):
         res = super(Property, self).create(vale)
         return res
+
+
+    @api.model
+    def _search(self, domain, offset=0, limit=None, order=None, access_rights_uid=None):
+        res = super()._search(domain, offset=0, limit=None, order=None, access_rights_uid=None)
+        return res
+
+    def write(self,vale):
+        res = super(Property, self).write(vale)
+        return res
+    
+    def unlink(self):
+        res = super(Property, self).unlink()
+        return res
