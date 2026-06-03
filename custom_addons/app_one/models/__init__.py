@@ -1,2 +1,3 @@
-from . import model_a, model_b, model_c, model_d, property
+from . import property
+from . import owner
 
