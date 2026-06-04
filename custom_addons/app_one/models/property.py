@@ -23,19 +23,22 @@ class Property(models.Model):
     ('east', 'East'),
     ('west', 'West'),
 ])
+    # relations if many2one make it singular if many2many or one2many make it plural (best practice)
+    owner_id = fields.Many2one('owner')
+
     _sql_constraints = {
         ('unique_name', 'unique("name")', 'this name exist already!')
     }
 
 
 
-    # @api.constrains('bedrooms')
-    # def _check_bedroom_greater_zero(self):
-    #     for rec in self:
-    #         if rec.bedrooms == 0:
-    #             # print("not valid")
-    #             raise ValidationError('Add valid number of bedrooms')
-    #
+    @api.constrains('bedrooms')
+    def _check_bedroom_greater_zero(self):
+        for rec in self:
+            if rec.bedrooms == 0:
+                # print("not valid")
+                raise ValidationError('Add valid number of bedrooms')
+
     # # CRUD Operations -> overriding it from Model:
     # @api.model_create_multi
     # def create(self, vale):
