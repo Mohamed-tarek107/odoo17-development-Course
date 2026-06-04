@@ -54,7 +54,7 @@
     </record>
 
     <record id="property_action" model ="ir.actions.act_window">
-        <field name="name">property action</field>
+        <field name="name">Property</field>
         <field name="res_model">property</field>
     </record>
 
