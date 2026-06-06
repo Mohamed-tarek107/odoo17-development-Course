@@ -25,6 +25,7 @@ class Property(models.Model):
 ])
     # relations if many2one make it singular if many2many or one2many make it plural (best practice)
     owner_id = fields.Many2one('owner')
+    tag_ids = fields.Many2many('tag')
 
     _sql_constraints = {
         ('unique_name', 'unique("name")', 'this name exist already!')
