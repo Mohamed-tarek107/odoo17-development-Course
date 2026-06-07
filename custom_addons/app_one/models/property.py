@@ -47,6 +47,25 @@ class Property(models.Model):
                 # print("not valid")
                 raise ValidationError('Add valid number of bedrooms')
 
+
+    def action_draft(self):
+        for rec in self:
+            rec.state = 'draft'
+            # rec.write({
+            #     'state': 'draft'
+            # })
+
+    def action_pending(self):
+        for rec in self:
+            rec.state = 'pending'
+
+    def action_sold(self):
+        for rec in self:
+            rec.write({
+                'state': 'sold'
+            })
+
+
     # # CRUD Operations -> overriding it from Model:
     # @api.model_create_multi
     # def create(self, vale):
