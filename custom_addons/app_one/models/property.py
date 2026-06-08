@@ -10,7 +10,9 @@ class Property(models.Model):
     description = fields.Text()
     postcode = fields.Char(required=True)
     Date_availability = fields.Date()
+    expected_price = fields.Float()
     selling_price = fields.Float()
+    diff = fields.Float(compute='_compute_diff')
     bedrooms = fields.Integer()
     living_rooms = fields.Integer()
     facades = fields.Integer()
@@ -39,6 +41,9 @@ class Property(models.Model):
     }
 
 
+    def _compute_diff(self):
+        for rec in self:
+            rec.diff = rec.expected_price - rec.selling_price
 
     @api.constrains('bedrooms')
     def _check_bedroom_greater_zero(self):
