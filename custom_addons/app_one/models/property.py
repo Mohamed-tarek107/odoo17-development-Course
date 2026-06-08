@@ -12,6 +12,7 @@ class Property(models.Model):
     Date_availability = fields.Date()
     expected_price = fields.Float()
     selling_price = fields.Float()
+    #add store=1  inside it so it stores in db <--+--> add readonly=0 to let users edit
     diff = fields.Float(compute='_compute_diff')
     bedrooms = fields.Integer()
     living_rooms = fields.Integer()
@@ -40,9 +41,21 @@ class Property(models.Model):
         ('unique_name', 'unique("name")', 'this name exist already!')
     }
 
+    #!!! Fyl onchange el argument lazem yba2a simple field(mowgod fyl model da msh relational)
+    @api.onchange('expected_price')
+    def _onchange_expected_price(self):
+        for rec in self:
+            print(rec)
+            print("inside onchange")
+        return {
+                'warning': {'title': 'warning', 'message': 'negative value', 'type': 'notification'}
+            }
 
+    #ay haga fyl el depend dy lma btt8yr btsh8l el function
+    @api.depends('expected_price','selling_price', 'owner_id.phone')
     def _compute_diff(self):
         for rec in self:
+            print("inside depends")
             rec.diff = rec.expected_price - rec.selling_price
 
     @api.constrains('bedrooms')
