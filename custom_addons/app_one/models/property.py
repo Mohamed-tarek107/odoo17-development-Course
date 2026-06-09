@@ -5,11 +5,13 @@ from odoo.exceptions import ValidationError
 class Property(models.Model):
     _name = 'property'
     _description = 'Property'
+    _inherit = ['mail.thread','mail.activity.mixin']
+
 
     name = fields.Char(required=True, default='New', size=10)
-    description = fields.Text()
+    description = fields.Text(tracking=1)
     postcode = fields.Char(required=True)
-    Date_availability = fields.Date()
+    Date_availability = fields.Date(tracking=1)
     expected_price = fields.Float()
     selling_price = fields.Float()
     #add store=1  inside it so it stores in db <--+--> add readonly=0 to let users edit
@@ -29,6 +31,10 @@ class Property(models.Model):
     # relations if many2one make it singular if many2many or one2many make it plural (best practice)
     owner_id = fields.Many2one('owner')
     tag_ids = fields.Many2many('tag')
+    owner_address = fields.Char(related='owner_id.address')
+    owner_phone = fields.Char(related='owner_id.phone')
+
+
 
     state = fields.Selection([
         ('draft','Draft'),
