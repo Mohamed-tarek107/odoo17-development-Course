@@ -30,7 +30,7 @@
                             <button name="action_pending" type="object" class="btn-secondary" string="Set To Pending"
                                     invisible="state != 'draft'"/>
                             <button name="action_sold" type="object" class="btn-success" string="Set To Sold"
-                                    invisible="state != 'pending'"/>/>
+                                    invisible="state != 'pending'"/>
 
 <!--                            <field name="state" widget="statusbar" statusbar_visible="draft,sold"/>-->
                             <field name="state" widget="statusbar" options="{'clickable': 1}"/>
@@ -44,6 +44,7 @@
                         <group>
                             <group string="General Info">
                                     <field name="Date_availability"/>
+                                    <field name="postcode"/>
                                     <field name="expected_price"/>
                                     <field name="selling_price"/>
                                     <field name="diff"/>
@@ -78,6 +79,7 @@
     <record id="property_action" model ="ir.actions.act_window">
         <field name="name">Property</field>
         <field name="res_model">property</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
 
@@ -85,6 +87,6 @@
         id="property_menu_item"
         name="Properties"
         parent="properties_menu"
-        action=""
+        action="property_action"
     />
 </odoo>
