@@ -3,7 +3,7 @@
         <field name="name">property action</field>
         <field name="model">property</field>
         <field name="arch" type="xml">
-                <tree>
+                <tree class="header_custom">
                     <field name="name"/>
                     <field name="postcode"/>
                     <field name="owner_id"/>
