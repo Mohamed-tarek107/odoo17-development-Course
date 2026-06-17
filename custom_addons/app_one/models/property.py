@@ -47,6 +47,9 @@ class Property(models.Model):
         ('unique_name', 'unique("name")', 'this name exist already!')
     }
 
+
+    line_ids = fields.Many2many('property.line', 'property_id')
+
     #!!! Fyl onchange el argument lazem yba2a simple field(mowgod fyl model da msh relational)
     @api.onchange('expected_price')
     def _onchange_expected_price(self):
@@ -108,3 +111,10 @@ class Property(models.Model):
     # def unlink(self):
     #     res = super(Property, self).unlink()
     #     return res
+
+    class PropertyLine(models.Model):
+        _name = 'property.line'
+
+        property_id = fields.Many2one('property')
+        area = fields.Float()
+        description = fields.Char()
